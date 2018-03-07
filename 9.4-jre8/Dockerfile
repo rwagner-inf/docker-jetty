@@ -47,6 +47,22 @@ ENV JETTY_BASE /var/lib/jetty
 RUN mkdir -p "$JETTY_BASE"
 WORKDIR $JETTY_BASE
 
+#MODDDD
+RUN mkdir /install
+RUN mkdir /applications
+RUN mkdir /conf
+
+RUN chown -R root:staff /usr/local/jetty
+RUN chown -R root:staff /install
+RUN chown -R root:staff /applications
+RUN chown -R root:staff /conf
+
+RUN chmod +x /start.sh
+RUN chmod +x /utils.sh
+
+#MODDDD
+
+
 RUN set -xe \
 	&& java -jar "$JETTY_HOME/start.jar" --create-startd --add-to-start="server,http,deploy,jsp,jstl,ext,resources,websocket" \
 	&& chown -R jetty:jetty "$JETTY_BASE" \
