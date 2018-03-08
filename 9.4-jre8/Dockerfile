@@ -1,7 +1,7 @@
 FROM openjdk:8-jre-stretch
 USER root
 # add our user and group first to make sure their IDs get assigned consistently, regardless of whatever dependencies get added
-RUN groupadd -r jetty && useradd -r -g jetty jetty
+#RUN groupadd -r jetty && useradd -r -g jetty jetty
 
 ENV JETTY_HOME /usr/local/jetty
 ENV PATH $JETTY_HOME/bin:$PATH
@@ -58,8 +58,8 @@ RUN set -xe \
 
 ENV TMPDIR /tmp/jetty
 RUN set -xe \
-	&& mkdir -p "$TMPDIR" \
-	&& chown -R jetty:jetty "$TMPDIR"
+	&& mkdir -p "$TMPDIR" #\
+#	&& chown -R jetty:jetty "$TMPDIR"
 
 COPY docker-entrypoint.sh generate-jetty-start.sh /
 
