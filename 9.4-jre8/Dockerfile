@@ -48,17 +48,17 @@ RUN mkdir -p "$JETTY_BASE"
 WORKDIR $JETTY_BASE
 
 #MODDDD
-RUN mkdir /install
-RUN mkdir /applications
-RUN mkdir /conf
+#RUN mkdir /install
+#RUN mkdir /applications
+#RUN mkdir /conf
 
-RUN chown -R root:staff /usr/local/jetty
-RUN chown -R root:staff /install
-RUN chown -R root:staff /applications
-RUN chown -R root:staff /conf
+#RUN chown -R root:staff /usr/local/jetty
+#RUN chown -R root:staff /install
+#RUN chown -R root:staff /applications
+#RUN chown -R root:staff /conf
 
-RUN chmod +x /start.sh
-RUN chmod +x /utils.sh
+#RUN chmod +x /start.sh
+#RUN chmod +x /utils.sh
 
 #MODDDD
 
