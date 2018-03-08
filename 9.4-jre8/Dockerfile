@@ -63,7 +63,6 @@ RUN set -xe \
 
 COPY docker-entrypoint.sh generate-jetty-start.sh /
 
-USER jetty
-EXPOSE 8080
+EXPOSE 9090
 ENTRYPOINT ["/docker-entrypoint.sh"]
 CMD ["java","-jar","/usr/local/jetty/start.jar"]
