@@ -35,16 +35,16 @@ ENV JETTY_GPG_KEYS \
 
 RUN set -xe \
 	&& curl -SL "$JETTY_TGZ_URL" -o jetty.tar.gz \
-	&& curl -SL "$JETTY_TGZ_URL.asc" -o jetty.tar.gz.asc \
-	&& export GNUPGHOME="$(mktemp -d)" \
-	&& for key in $JETTY_GPG_KEYS; do \
-		gpg --keyserver ha.pool.sks-keyservers.net --recv-keys "$key"; done \
-	&& gpg --batch --verify jetty.tar.gz.asc jetty.tar.gz \
-	&& rm -rf "$GNUPGHOME" \
+	#&& curl -SL "$JETTY_TGZ_URL.asc" -o jetty.tar.gz.asc \
+	#&& export GNUPGHOME="$(mktemp -d)" \
+	#&& for key in $JETTY_GPG_KEYS; do \
+		#gpg --keyserver ha.pool.sks-keyservers.net --recv-keys "$key"; done \
+	#&& gpg --batch --verify jetty.tar.gz.asc jetty.tar.gz \
+	#&& rm -rf "$GNUPGHOME" \
 	&& tar -xvf jetty.tar.gz --strip-components=1 \
 	&& sed -i '/jetty-logging/d' etc/jetty.conf \
-	&& rm jetty.tar.gz* \
-	&& rm -rf /tmp/hsperfdata_root
+	&& rm jetty.tar.gz* #\
+	#&& rm -rf /tmp/hsperfdata_root
 
 ENV JETTY_BASE /var/lib/jetty
 RUN mkdir -p "$JETTY_BASE"
